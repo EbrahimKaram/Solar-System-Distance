@@ -106,6 +106,14 @@ const planetMeshes = planets.map((planet) => {
   return mesh;
 });
 
+const planetLabels = planets.map(planet => {
+  const label = document.createElement('div');
+  label.className = 'planet-label';
+  label.textContent = planet.name;
+  canvas.parentElement.appendChild(label);
+  return label;
+});
+
 const orbitMaterial = new THREE.LineBasicMaterial({ color: "#1f2d4f" });
 planets.forEach((planet) => {
   const radius = planet.au * 12;
@@ -187,6 +195,15 @@ function animate() {
       0,
       Math.sin(time * speed) * radius
     );
+
+    const tempV = new THREE.Vector3();
+    tempV.copy(planetMeshes[index].position);
+    tempV.project(camera);
+    const x = (tempV.x * 0.5 + 0.5) * canvas.clientWidth;
+    const y = (tempV.y * -0.5 + 0.5) * canvas.clientHeight;
+    const label = planetLabels[index];
+    label.style.left = `${x}px`;
+    label.style.top = `${y}px`;
   });
 
   const indexA = Number(planetASelect.value);
