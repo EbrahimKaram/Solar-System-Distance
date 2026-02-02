@@ -4,14 +4,14 @@ import { OrbitControls } from "https://unpkg.com/three@0.159.0/examples/jsm/cont
 const AU_IN_KM = 149_597_870.7;
 
 const planets = [
-  { name: "Mercury", au: 0.39, color: "#a7a7a7", size: 0.6 },
-  { name: "Venus", au: 0.72, color: "#f5c16c", size: 0.9 },
-  { name: "Earth", au: 1.0, color: "#61a5ff", size: 1.0 },
-  { name: "Mars", au: 1.52, color: "#ff6b4a", size: 0.75 },
-  { name: "Jupiter", au: 5.2, color: "#f7d1a4", size: 2.2 },
-  { name: "Saturn", au: 9.58, color: "#f2e3b5", size: 2.0 },
-  { name: "Uranus", au: 19.2, color: "#7ad7f0", size: 1.6 },
-  { name: "Neptune", au: 30.05, color: "#4b74ff", size: 1.6 }
+  { name: "Mercury", au: 0.39, color: "#a7a7a7", size: 0.6, desc: "The smallest planet, closest to the Sun." },
+  { name: "Venus", au: 0.72, color: "#f5c16c", size: 0.9, desc: "The hottest planet, shrouded in thick clouds." },
+  { name: "Earth", au: 1.0, color: "#61a5ff", size: 1.0, desc: "Our home, the only world known to harbor life." },
+  { name: "Mars", au: 1.52, color: "#ff6b4a", size: 0.75, desc: "The Red Planet, home to the largest volcano." },
+  { name: "Jupiter", au: 5.2, color: "#f7d1a4", size: 2.2, desc: "The largest planet, a massive gas giant." },
+  { name: "Saturn", au: 9.58, color: "#f2e3b5", size: 2.0, desc: "Adorned with the most complex ring system." },
+  { name: "Uranus", au: 19.2, color: "#7ad7f0", size: 1.6, desc: "An ice giant that rotates on its side." },
+  { name: "Neptune", au: 30.05, color: "#4b74ff", size: 1.6, desc: "The windiest planet, furthest from the Sun." }
 ];
 
 const planetASelect = document.getElementById("planetA");
@@ -158,7 +158,7 @@ function updateTooltip(event) {
     tooltip.style.opacity = "1";
     tooltip.style.left = `${event.clientX - rect.left}px`;
     tooltip.style.top = `${event.clientY - rect.top}px`;
-    tooltip.textContent = `${planet.name} • ${planet.au} AU`;
+    tooltip.innerHTML = `<strong>${planet.name}</strong> • ${planet.au} AU from Sun<br><span style="font-size:0.85em; opacity:0.8; display:block; margin-top:0.25rem;">${planet.desc}</span>`;
   } else {
     tooltip.style.opacity = "0";
   }
