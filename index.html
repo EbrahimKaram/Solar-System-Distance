@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Milky Way Planet Distances</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div>
+          <h1>Milky Way Planet Distances</h1>
+          <p>Compare average orbital distances between planets in our Solar System.</p>
+        </div>
+        <div class="legend">
+          <span class="dot"></span>
+          <span>Planets</span>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="panel">
+          <h2>Distance calculator</h2>
+          <div class="controls">
+            <label>
+              Planet A
+              <select id="planetA"></select>
+            </label>
+            <label>
+              Planet B
+              <select id="planetB"></select>
+            </label>
+          </div>
+          <div class="result">
+            <div>
+              <span class="label">Distance (AU)</span>
+              <span id="distanceAu" class="value">—</span>
+            </div>
+            <div>
+              <span class="label">Distance (km)</span>
+              <span id="distanceKm" class="value">—</span>
+            </div>
+          </div>
+          <div class="note">
+            <p>Distances use average orbital radii. 1 AU = 149,597,870.7 km.</p>
+          </div>
+        </section>
+
+        <section class="canvas-wrap">
+          <canvas id="space"></canvas>
+          <div class="tooltip" id="tooltip"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Built with Three.js &middot; Not to scale visually, distances are normalized.</p>
+      </footer>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.159.0/build/three.module.js"
+        }
+      }
+    </script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
